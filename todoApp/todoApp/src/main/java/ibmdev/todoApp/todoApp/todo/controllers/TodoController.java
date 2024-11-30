@@ -1,11 +1,18 @@
 package ibmdev.todoApp.todoApp.todo.controllers;
 
+import ibmdev.todoApp.todoApp.todo.Dtos.TodoCreateDto;
 import ibmdev.todoApp.todoApp.todo.Entities.Todo;
+import ibmdev.todoApp.todoApp.todo.utilities.TodoComparator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ibmdev.todoApp.todoApp.todo.services.TodoService;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -14,6 +21,7 @@ import java.util.List;
 public class TodoController {
 
     private final TodoService todoService;
+    private static final Logger logger = LoggerFactory.getLogger(TodoController.class);
 
     public TodoController(TodoService todoService) {
         this.todoService = todoService;
@@ -21,22 +29,28 @@ public class TodoController {
 
     @GetMapping
     public ResponseEntity<List<Todo>> getAll(){
-        return new ResponseEntity<>(todoService.GetAllTodos(), HttpStatus.FOUND);
+        List<Todo> todos = todoService.GetAllTodos();
+        todos.sort(new TodoComparator());
+        return new ResponseEntity<>(todos, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public  ResponseEntity<Todo> get(@PathVariable int id){
         Todo todoFromDb = todoService.getById(id);
         if(todoFromDb != null){
-            return new ResponseEntity<>(todoFromDb, HttpStatus.FOUND);
+            return new ResponseEntity<>(todoFromDb, HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public ResponseEntity<Todo> create(@RequestBody Todo todo){
-        Todo createdTodo = todoService.createTodo(todo);
-        return new ResponseEntity<>(createdTodo, HttpStatus.CREATED);
+    public ResponseEntity<Todo> create(@RequestBody TodoCreateDto todoCreateDto){
+        logger.info("Received POST request with data: {}", todoCreateDto);
+        Todo createdTodo = new Todo();
+        createdTodo.setContent(todoCreateDto.getContent());
+        createdTodo.setLastEditDate(todoCreateDto.getLastEditDate());
+        Todo created = todoService.createTodo(createdTodo);
+        return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
