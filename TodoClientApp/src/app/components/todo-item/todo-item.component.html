@@ -1,0 +1,26 @@
+
+
+<div class="todo-item">
+
+    <div class="task-bar">
+    
+        <button mat-fab extended (click)="editTodo()" class="edit-button">
+            <mat-icon>edit</mat-icon>
+        </button>
+
+        <p class="date-todo-header">Edité le : {{lastEditDate | date:'dd/MM/yyyy, HH:mm'}}</p>
+
+
+        <button mat-fab extended (click)="deleteTodo(id)" class="delete-button">
+            <mat-icon>delete</mat-icon>
+        </button>
+    
+    </div>
+
+    <h3>{{title}}</h3>
+
+    <p>{{content}}</p>
+
+    <input type="hidden" [value]="id">
+
+</div>

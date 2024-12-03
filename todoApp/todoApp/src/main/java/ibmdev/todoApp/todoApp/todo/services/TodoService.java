@@ -30,13 +30,6 @@ public class TodoService {
     public Todo getById(int id) {
         Optional<Todo> todoFromDb = todoRepository.findById(id);
         return todoFromDb.orElse(null);
-//      LA METHODE AU DESSUS EST LE MEME RESULTAT QUE LE CODE D'EN BAS
-//        if(todoFromDb.isPresent()){
-//            return todoFromDb.get();
-//        }
-//        else{
-//            return null;
-//        }
     }
 
     public Todo updateTodo(int id, Todo todo){
@@ -44,6 +37,7 @@ public class TodoService {
         if(todoToUpdate.isPresent()){
             todoToUpdate.get().setLastEditDate(todo.getLastEditDate());
             todoToUpdate.get().setContent(todo.getContent());
+            todoToUpdate.get().setTitle(todo.getTitle());
             todoRepository.save(todoToUpdate.get());
         }
         return  todoToUpdate.orElse(null);

@@ -15,19 +15,4 @@ public class TodoAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TodoAppApplication.class, args);
 	}
-
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer() {
-//		return new WebMvcConfigurer() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/api/**")
-//						.allowedOrigins("http://localhost:4200") // Autorisez votre client Angular
-//						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-//						.allowedHeaders("*")
-//						.allowCredentials(true);
-//			}
-//		};
-//	}
-
 }

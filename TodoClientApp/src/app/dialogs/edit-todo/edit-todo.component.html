@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="container">
+    <mat-form-field class="todo-create-form-control">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title">
+    </mat-form-field>
+    
+    <mat-form-field class="todo-create-form-control">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="content"></textarea>
+    </mat-form-field>
+    
+    <div class="button-container">
+        <button mat-fab extended type="submit" (submit)="onSubmit()">
+            <mat-icon>update</mat-icon>
+            Update
+        </button>
+        
+        <button mat-fab extended (click)="cancel()">
+            <mat-icon>cancel</mat-icon>
+            Cancel
+        </button>
+    </div>
+</form>    

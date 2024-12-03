@@ -49,13 +49,18 @@ public class TodoController {
         Todo createdTodo = new Todo();
         createdTodo.setContent(todoCreateDto.getContent());
         createdTodo.setLastEditDate(todoCreateDto.getLastEditDate());
+        createdTodo.setTitle(todoCreateDto.getTitle());
         Todo created = todoService.createTodo(createdTodo);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Todo> updateTodo(@PathVariable int id, @RequestBody Todo todo) {
-        Todo updatedTodo = todoService.updateTodo(id, todo);
+    public ResponseEntity<Todo> updateTodo(@PathVariable int id, @RequestBody TodoCreateDto todoToUpdateFromRequest) {
+        Todo todoToUpdate = new Todo();
+        todoToUpdate.setContent(todoToUpdateFromRequest.getContent());
+        todoToUpdate.setLastEditDate(todoToUpdateFromRequest.getLastEditDate());
+        todoToUpdate.setTitle(todoToUpdateFromRequest.getTitle());
+        Todo updatedTodo = todoService.updateTodo(id, todoToUpdate);
         if (updatedTodo != null) {
             return ResponseEntity.ok(updatedTodo);
         } else {

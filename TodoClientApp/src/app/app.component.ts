@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import localeFr from '@angular/common/locales/fr';
 import { TodoBoardComponent } from "./components/todo-board/todo-board.component";
 
 @Component({
