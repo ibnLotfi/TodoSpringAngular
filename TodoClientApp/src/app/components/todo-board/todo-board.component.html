@@ -1,6 +1,6 @@
 <div class="todo-board-container">
 
-  <app-todo-board-header (openCreateTodoDialog)="openCreateTodoDialog()"></app-todo-board-header>
+  <app-todo-board-header (openCreateTodoDialog)="openCreateTodoDialog()" (refreshTodos)="refreshTodos($event)"></app-todo-board-header>
 
   <app-todo-list [todos]="this.todos" (refreshTodos)="refreshTodos()"></app-todo-list>
 

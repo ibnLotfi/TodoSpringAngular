@@ -1,5 +1,26 @@
 <div class="board-header">
     <div class="date">{{ today | date:'EEEE dd MMM yyyy'}}</div>
+    
+    <!-- <div>
+        <p>Priority:</p>
+        <select [value]="priorityFilter">
+            <option></option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+        </select>
+    </div> -->
+    <div>
+        <mat-form-field >
+            <mat-label>Select todo by priority</mat-label>
+            <mat-select (selectionChange)="callRefreshTodos($event)" matInput formControlName="priority" required >
+                @for (priority of priorities; track priority.valueOf()) {
+                <mat-option [value]="priority">{{priority.toString().toLowerCase()}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+    </div>
+
     <button class="btn-new" (click)="callOpenCreateTodoDialog()">+ New</button>
     <div class="sort-panel">Sort Options</div>
 </div>
