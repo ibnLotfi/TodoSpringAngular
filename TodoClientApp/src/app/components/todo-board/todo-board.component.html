@@ -9,11 +9,12 @@
   
     <div 
       class="board">
-      <div class="post-it" *ngFor="let todo of todos;">
+      <div class="post-it" *ngFor="let todo of todos;" [ngClass]="todo.priority.toString().toLowerCase()">
         <app-todo-item 
           (refreshTodos)="refreshTodos()"
           [title]="todo.title"
           [content]="todo.content"
+          [priority]="todo.priority.toString()"
           [id]="todo.id"
           [lastEditDate]="todo.lastEditDate">
         </app-todo-item>

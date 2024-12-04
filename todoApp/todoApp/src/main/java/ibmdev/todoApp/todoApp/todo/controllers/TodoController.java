@@ -50,6 +50,7 @@ public class TodoController {
         createdTodo.setContent(todoCreateDto.getContent());
         createdTodo.setLastEditDate(todoCreateDto.getLastEditDate());
         createdTodo.setTitle(todoCreateDto.getTitle());
+        createdTodo.setPriority(todoCreateDto.getPriority());
         Todo created = todoService.createTodo(createdTodo);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
@@ -60,6 +61,7 @@ public class TodoController {
         todoToUpdate.setContent(todoToUpdateFromRequest.getContent());
         todoToUpdate.setLastEditDate(todoToUpdateFromRequest.getLastEditDate());
         todoToUpdate.setTitle(todoToUpdateFromRequest.getTitle());
+        todoToUpdate.setPriority(todoToUpdateFromRequest.getPriority());
         Todo updatedTodo = todoService.updateTodo(id, todoToUpdate);
         if (updatedTodo != null) {
             return ResponseEntity.ok(updatedTodo);

@@ -18,6 +18,7 @@ export class TodoItemComponent {
   @Input() content!: string;
   @Input() lastEditDate!: Date;
   @Input() title!: string;
+  @Input() priority!: string;
   @Output("refreshTodos") refreshTodos: EventEmitter<any> = new EventEmitter();
   readonly dialog = inject(MatDialog);
 
@@ -43,7 +44,7 @@ export class TodoItemComponent {
       {
         height: '50%',
         width: '45%',
-        data: { "id":this.id, "content": this.content, "title": this.title },
+        data: { "id":this.id, "content": this.content, "title": this.title, "priority": this.priority },
       }, 
     );
     dialogRef.afterClosed().subscribe({

@@ -38,6 +38,7 @@ public class TodoService {
             todoToUpdate.get().setLastEditDate(todo.getLastEditDate());
             todoToUpdate.get().setContent(todo.getContent());
             todoToUpdate.get().setTitle(todo.getTitle());
+            todoToUpdate.get().setPriority(todo.getPriority());
             todoRepository.save(todoToUpdate.get());
         }
         return  todoToUpdate.orElse(null);
