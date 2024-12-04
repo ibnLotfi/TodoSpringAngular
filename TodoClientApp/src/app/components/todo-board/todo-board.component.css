@@ -59,7 +59,6 @@
 /* Post-it */
 .post-it {
   margin: 10px;
-  background-color: #ffeb3b;
   padding: 16px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -70,6 +69,18 @@
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none; 
+}
+
+.high {
+  background-color: rgba(255, 52, 52, 0.884);
+}
+
+.medium {
+  background-color: rgba(97, 197, 184, 0.877);
+}
+
+.low {
+  background-color: #ffd633e1;
 }
 
 

@@ -16,12 +16,16 @@ public class Todo {
     @Column(name = "last_edit_date")
     private Date lastEditDate;
 
+    @Enumerated(EnumType.STRING)
+    private Priority priority;
 
-    public Todo(int id, String content, Date lastEditDate, String title) {
+
+    public Todo(int id, String content, Date lastEditDate, String title, Priority priority) {
         this.id = id;
         this.content = content;
         this.lastEditDate = lastEditDate;
         this.title = title;
+        this.priority = priority;
     }
 
     public Todo() {
@@ -57,5 +61,13 @@ public class Todo {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 }

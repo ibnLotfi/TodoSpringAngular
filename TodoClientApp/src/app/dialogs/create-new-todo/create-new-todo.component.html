@@ -8,6 +8,15 @@
         <mat-label>Content</mat-label>
         <textarea matInput formControlName="content"></textarea>
     </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <mat-select  matInput formControlName="priority" required>
+          @for (priority of priorities; track priority.valueOf()) {
+            <mat-option [value]="priority">{{priority.toString().toLowerCase()}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
     
     <div class="button-container">
         <button mat-fab extended type="submit">

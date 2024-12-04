@@ -1,5 +1,7 @@
 package ibmdev.todoApp.todoApp.todo.Dtos;
 
+import ibmdev.todoApp.todoApp.todo.Entities.Priority;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 
@@ -8,14 +10,16 @@ public class TodoCreateDto {
     private String content;
     private Date lastEditDate;
     private String title;
+    private Priority priority;
 
     public TodoCreateDto() {
     }
 
-    public TodoCreateDto(String content, Date lastEditDate, String title) {
+    public TodoCreateDto(String content, Date lastEditDate, String title, Priority priority) {
         this.content = content;
         this.lastEditDate = lastEditDate;
         this.title = title;
+        this.priority = priority;
     }
 
     public String getContent() {
@@ -40,6 +44,14 @@ public class TodoCreateDto {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Priority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Priority priority) {
+        this.priority = priority;
     }
 
 }
