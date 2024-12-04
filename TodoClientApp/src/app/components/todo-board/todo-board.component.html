@@ -1,28 +1,7 @@
-
 <div class="todo-board-container">
 
-    <div class="board-header">
-      <div class="date">{{ today | date:'EEEE dd MMM yyyy'}}</div>
-      <button class="btn-new" (click)="openCreateTodoDialog()">+ New</button>
-      <div class="sort-panel">Sort Options</div>
-    </div>
-  
-    <div 
-      class="board">
-      <div class="post-it" *ngFor="let todo of todos;" [ngClass]="todo.priority.toString().toLowerCase()">
-        <app-todo-item 
-          (refreshTodos)="refreshTodos()"
-          [title]="todo.title"
-          [content]="todo.content"
-          [priority]="todo.priority.toString()"
-          [id]="todo.id"
-          [lastEditDate]="todo.lastEditDate">
-        </app-todo-item>
-      </div>
-    </div>
-<!--   
-    <div class="board-footer">
-      <span>🗑️ Drag here to delete</span>
-    </div> -->
-  </div>
-  
+  <app-todo-board-header (openCreateTodoDialog)="openCreateTodoDialog()"></app-todo-board-header>
+
+  <app-todo-list [todos]="this.todos" (refreshTodos)="refreshTodos()"></app-todo-list>
+
+</div>

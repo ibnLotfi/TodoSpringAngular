@@ -7,11 +7,13 @@ import {
 } from '@angular/material/dialog';
 import { CreateNewTodoComponent } from '../../dialogs/create-new-todo/create-new-todo.component';
 import { TodoService } from '../../services/todo.service';
+import { TodoBoardHeaderComponent } from "../todo-board-header/todo-board-header.component";
+import { TodoListComponent } from "../todo-list/todo-list.component";
 
 @Component({
   selector: 'app-todo-board',
   standalone: true,
-  imports: [TodoItemComponent, CommonModule],
+  imports: [CommonModule, TodoBoardHeaderComponent, TodoListComponent],
   templateUrl: './todo-board.component.html',
   styleUrl: './todo-board.component.css'
 })
